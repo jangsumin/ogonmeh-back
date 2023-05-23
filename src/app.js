@@ -47,3 +47,7 @@ app.get('/users/:date', (req, res) => {
 app.listen(PORT, () => {
   console.log(`The server is listening at ${PORT}`);
 });
+
+// register 앱에 연결
+const register = require('./routes/register');
+app.use('/register', register);
