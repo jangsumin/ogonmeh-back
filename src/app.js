@@ -51,3 +51,24 @@ app.listen(PORT, () => {
 // register 앱에 연결
 const register = require('./routes/register');
 app.use('/register', register);
+
+const bodyParser = require('body-parser');
+// JSON 데이터 파싱을 위한 미들웨어 등록
+app.use(bodyParser.json());
+// URL 인코딩된 데이터 파싱을 위한 미들웨어 등록
+app.use(bodyParser.urlencoded({ extended: true }));
+
+const cors = require('cors');
+app.use(cors());
+
+app.post('/submit', (req, res) => {
+  const date = req.body.date;
+  const koreanFoodCorner = req.body.koreanFoodCorner;
+  const hotCorner = req.body.hotCorner;
+  const saladCorner = req.body.saladCorner;
+  console.log(date);
+  console.log(koreanFoodCorner);
+  console.log(hotCorner);
+  console.log(saladCorner);
+  res.send('POST 요청이 성공적으로 처리되었습니다.');
+});
