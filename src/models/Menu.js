@@ -7,19 +7,19 @@ const menuSchema = new Schema(
     // date는 unique, 필수
     date: {
       type: String,
-      maxlength: 8,
-      unique: true,
+      maxlength: 6,
+      // unique: true,
       require: true,
     },
-    korean_food_corner: {
+    koreanFoodCorner: {
       type: [String],
       maxlength: 8,
     },
-    hot_corner: {
+    hotCorner: {
       type: [String],
       maxlength: 4,
     },
-    salad_corner: {
+    saladCorner: {
       type: [String],
       maxlength: 4,
     },
