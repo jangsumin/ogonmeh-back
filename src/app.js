@@ -51,6 +51,7 @@ app.listen(PORT, () => {
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const register = require('./routes/register');
+const get = require('./routes/get');
 
 // CORS 에러 방지를 위한 미들웨어 등록
 app.use(cors());
@@ -60,3 +61,5 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // register 앱에 연결
 app.use('/register', register);
+// get 앱에 연결
+app.use('/get', get);
