@@ -9,11 +9,6 @@ const postMenu = async (req, res) => {
       hotCorner: req.body.hotCorner,
       saladCorner: req.body.saladCorner,
     });
-    const filter = { date: { $eq: req.body.date } };
-    const result = await Menu.findOne(filter);
-    if (result !== null) {
-      await Menu.deleteOne(filter);
-    }
     menu
       .save()
       .then(() => {
@@ -37,7 +32,24 @@ const getMenu = async (req, res) => {
   }
 };
 
+const updateMenu = async (req, res) => {
+  try {
+    const filter = { date: { $eq: req.body.date } };
+    const update = {
+      $set: {
+        koreanFoodCorner: req.body.koreanFoodCorner,
+        hotCorner: req.body.hotCorner,
+        saladCorner: req.body.saladCorner,
+      },
+    };
+    await Menu.updateOne(filter, update);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 module.exports = {
   postMenu,
   getMenu,
+  updateMenu,
 };
