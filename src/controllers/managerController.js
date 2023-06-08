@@ -1,7 +1,7 @@
 require('../db/connect');
 const Menu = require('../models/Menu');
 
-const postMenu = (req, res) => {
+const postMenu = async (req, res) => {
   try {
     const menu = new Menu({
       date: req.body.date,
@@ -9,6 +9,11 @@ const postMenu = (req, res) => {
       hotCorner: req.body.hotCorner,
       saladCorner: req.body.saladCorner,
     });
+    const filter = { date: { $eq: req.body.date } };
+    const result = await Menu.findOne(filter);
+    if (result !== null) {
+      await Menu.deleteOne(filter);
+    }
     menu
       .save()
       .then(() => {
