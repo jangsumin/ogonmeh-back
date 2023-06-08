@@ -25,7 +25,7 @@ const registerMenu = (req, res) => {
 const getMenu = async (req, res) => {
   try {
     const reqDate = req.params.date;
-    const data = await Menu.find({ date: { $eq: reqDate } });
+    const data = await Menu.findOne({ date: { $eq: reqDate } });
     res.send(data);
   } catch (err) {
     console.log(err);
