@@ -1,7 +1,7 @@
 require('../db/connect');
 const Menu = require('../models/Menu');
 
-const registerMenu = (req, res) => {
+const postMenu = (req, res) => {
   try {
     const menu = new Menu({
       date: req.body.date,
@@ -33,6 +33,6 @@ const getMenu = async (req, res) => {
 };
 
 module.exports = {
-  registerMenu,
+  postMenu,
   getMenu,
 };
