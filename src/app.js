@@ -53,6 +53,8 @@ const bodyParser = require('body-parser');
 const post = require('./routes/post');
 const get = require('./routes/get');
 const update = require('./routes/update');
+const getCount = require('./routes/getCount');
+const updateCount = require('./routes/updateCount');
 
 // CORS 에러 방지를 위한 미들웨어 등록
 app.use(cors());
@@ -66,3 +68,7 @@ app.use('/post', post);
 app.use('/get', get);
 // update 앱에 연결
 app.use('/update', update);
+// getCount 앱에 연결
+app.use('/getCount', getCount);
+// updateCount 앱에 연결
+app.use('/updateCount', updateCount);
