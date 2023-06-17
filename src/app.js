@@ -32,3 +32,18 @@ app.use('/update', update);
 app.use('/getCount', getCount);
 // updateCount 앱에 연결
 app.use('/updateCount', updateCount);
+// 로그인
+app.post('/login', async (req, res) => {
+  try {
+    const { id, password } = req.body;
+    if (id === process.env.ID && password === process.env.PASSWORD) {
+      console.log('성공');
+      res.json({ success: true });
+    } else {
+      console.log('실패');
+      res.json({ success: false });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+});
