@@ -15,6 +15,7 @@ const get = require('./routes/get');
 const update = require('./routes/update');
 const getCount = require('./routes/getCount');
 const updateCount = require('./routes/updateCount');
+const login = require('./routes/login');
 
 // CORS 에러 방지를 위한 미들웨어 등록
 app.use(cors());
@@ -33,17 +34,4 @@ app.use('/getCount', getCount);
 // updateCount 앱에 연결
 app.use('/updateCount', updateCount);
 // 로그인
-app.post('/login', async (req, res) => {
-  try {
-    const { id, password } = req.body;
-    if (id === process.env.ID && password === process.env.PASSWORD) {
-      console.log('성공');
-      res.json({ success: true });
-    } else {
-      console.log('실패');
-      res.json({ success: false });
-    }
-  } catch (err) {
-    console.log(err);
-  }
-});
+app.use('/login', login);

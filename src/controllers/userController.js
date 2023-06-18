@@ -27,7 +27,23 @@ const updateCount = async (req, res) => {
   }
 };
 
+const login = async (req, res) => {
+  try {
+    const { id, password } = req.body;
+    if (id === process.env.ID && password === process.env.PASSWORD) {
+      console.log('성공');
+      res.json({ success: true });
+    } else {
+      console.log('실패');
+      res.json({ success: false });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 module.exports = {
   getCount,
   updateCount,
+  login,
 };
