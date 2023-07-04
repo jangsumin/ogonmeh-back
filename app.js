@@ -10,12 +10,12 @@ app.listen(PORT, () => {
 
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const post = require('./routes/post');
-const get = require('./routes/get');
-const update = require('./routes/update');
-const getCount = require('./routes/getCount');
-const updateCount = require('./routes/updateCount');
-const login = require('./routes/login');
+const post = require('./src/routes/post');
+const get = require('./src/routes/get');
+const update = require('./src/routes/update');
+const getCount = require('./src/routes/getCount');
+const updateCount = require('./src/routes/updateCount');
+const login = require('./src/routes/login');
 
 // CORS 에러 방지를 위한 미들웨어 등록
 app.use(cors());
